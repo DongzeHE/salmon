@@ -838,10 +838,14 @@ void process_reads_sc_sketch(paired_parser* parser, ReadExperimentT& readExp, Re
         } else { // must use string
           bw << umi;
         }
-
+        // write tids
         for (auto& aln : accepted_hits) {
           uint32_t fw_mask = aln.is_fw ? 0x80000000 : 0x00000000;
           bw << (aln.tid | fw_mask);
+        }
+        ++num_reads_in_chunk;
+        // write pos
+        for (auto& aln : accepted_hits) {
           bw << aln.pos;
         }
         ++num_reads_in_chunk;
