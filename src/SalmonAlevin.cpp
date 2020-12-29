@@ -842,11 +842,13 @@ void process_reads_sc_sketch(paired_parser* parser, ReadExperimentT& readExp, Re
         for (auto& aln : accepted_hits) {
           uint32_t fw_mask = aln.is_fw ? 0x80000000 : 0x00000000;
           bw << (aln.tid | fw_mask);
+          salmonOpts.jointLog->info("{}\t", aln.tid | fw_mask);
         }
         ++num_reads_in_chunk;
         // write pos
         for (auto& aln : accepted_hits) {
           bw << aln.pos;
+          salmonOpts.jointLog->info("{}\t", aln.pos);
         }
       } else { // if read was not mapped
         if (barcode_ok) {
