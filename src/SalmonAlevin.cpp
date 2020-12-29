@@ -848,7 +848,6 @@ void process_reads_sc_sketch(paired_parser* parser, ReadExperimentT& readExp, Re
         for (auto& aln : accepted_hits) {
           bw << aln.pos;
         }
-        ++num_reads_in_chunk;
       } else { // if read was not mapped
         if (barcode_ok) {
           unmapped_bc_map[bck.word(0)] += 1;
