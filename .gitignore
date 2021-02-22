@@ -29,12 +29,3 @@
 
 # Emacs save files
 *~
-
-# build folder
-build/
-bin/
-*.cmake
-tests/
-
-# external libraries
-external/
